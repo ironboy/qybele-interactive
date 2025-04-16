@@ -1,4 +1,4 @@
-import 'hilighter/dist.js';
+import './hilighter/dist.js';
 
 export default function hilite(content) {
   //globalThis.__qybeleInteractivePrismCodeList(document.querySelector('#root'), markdown);
