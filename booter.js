@@ -42,12 +42,12 @@
 
   async function boot() {
     const content = await waitForContent();
+    const attr = 'data-qybele-interactive-post-processing-done';
+    await addModuleScript();
     while (true) {
       if (globalThis.__qybeleInteractiveMain) { break; }
       await sleep(20);
     }
-    const attr = 'data-qybele-interactive-post-processing-done';
-    await addModuleScript();
     if (content.attr(attr) !== 'yes') {
       await globalThis.__qybeleInteractiveMain(content);
       content.attr(attr, 'yes');
