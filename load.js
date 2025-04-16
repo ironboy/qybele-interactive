@@ -20,7 +20,7 @@
 
   async function addModuleScript(currentScript) {
     if (document.querySelector('head script#qybele-interactive-nh')) { return; }
-    let version = await (await fetch('https://raw.githubusercontent.com/ironboy/qybele-interactive/refs/heads/main/version.txt?' + Math.random())).text();
+    let version = currentScript.split('?')[1];
     const dir = currentScript.getAttribute('src').split('/').slice(0, -1).join('/');
     const moduleScriptTag = document.createElement('script');
     moduleScriptTag.setAttribute('src', dir + `/version${version}/index.js`);
