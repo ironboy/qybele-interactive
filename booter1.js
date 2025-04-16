@@ -18,9 +18,10 @@
   async function addModuleScript() {
     if (document.querySelector('head script#qybele-interactive-nh')) { return; }
     let version = await (await fetch('https://raw.githubusercontent.com/ironboy/qybele-interactive/refs/heads/main/version.txt')).text();
+    console.log("HM", document.currentScript);
     const dir = document.currentScript.getAttribute('src').split('/').slice(0, -1).join('/');
     const moduleScriptTag = document.createElement('script');
-    moduleScriptTag.setAttribute('src', dir + `/version{$version}/index.js`);
+    moduleScriptTag.setAttribute('src', dir + `/version${version}/index.js`);
     moduleScriptTag.setAttribute('type', 'module');
     moduleScriptTag.setAttribute('id', 'qybele-interactive-nh');
     document.querySelector('head').append(moduleScriptTag);
