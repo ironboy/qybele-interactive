@@ -9,7 +9,8 @@ export default function hilite(content) {
       .replace(/℆/g, '&gt;');
     let settings = $(this).attr('data-code-details');
     html = `<pre data-code-details="${settings}">${html}</pre>`;
-    console.log(html);
-    globalThis.__qybeleInteractivePrismCodeList(this, html, true);
+    let div = $('<div></div>');
+    $(this).replaceWith(div);
+    globalThis.__qybeleInteractivePrismCodeList(div, html, true);
   });
 }
