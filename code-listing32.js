@@ -9,7 +9,6 @@ async function waitForContent() {
   while (true) {
     content = $(mainParent).find('.module_content');
     if (content.html()) { break; }
-    console.log('waiting');
     await sleep(20);
   }
   return content;
