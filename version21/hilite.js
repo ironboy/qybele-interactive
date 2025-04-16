@@ -10,7 +10,7 @@ export default function hilite(content) {
       .replace(/℆/g, '&gt;');
     let settings = $(this).attr('data-code-details');
     html = `<pre data-code-details="${settings}">${html}</pre>`;
-    let div = $(`<div style="visibility:hidden">${orgHtml}</div>`);
+    let div = $(`<div>${orgHtml}</div>`);
     $(this).replaceWith(div);
     globalThis.__qybeleInteractivePrismCodeList(div[0], html, true);
   });

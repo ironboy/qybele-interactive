@@ -43,8 +43,18 @@
     return content;
   }
 
+  function hideCodeListingsInitially() {
+    const styleEl = document.createElement('style');
+    styleEl.textContent = `
+      pre[data-code-details]{
+        visibility:hidden !important;
+      }
+    `;
+  }
+
   async function boot() {
     let scriptTag = document.currentScript;
+    hideCodeListingsInitially();
     await addModuleScript(scriptTag);
     const content = await waitForContent(scriptTag);
     const attr = 'data-qybele-interactive-post-processing-done';
