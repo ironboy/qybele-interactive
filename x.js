@@ -38,7 +38,6 @@
     while (true) {
       content = $(mainParent).find('.module_content');
       if (content.html()) { break; }
-      console.log("STUCK TTTTTTTHEEEEERE");
       await sleep(20);
     }
     return content;
@@ -52,7 +51,6 @@
     if (content.attr(attr) !== 'yes') {
       while (true) {
         if (globalThis.__qybeleInteractiveMain) { break; }
-        console.log("STUCK HEEEEERE");
         await sleep(20);
       }
       globalThis.__qybeleInteractiveMain(content);
