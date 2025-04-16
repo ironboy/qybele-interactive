@@ -9,6 +9,9 @@
   that from using document.currentScript
   which is not available in ES Modules.
 
+  Also gets the version from GitHub directly
+  so that we can ask jsdelivr for the right version folder
+
   So here we get the content element and load the es6 module (index.js)
 */
 (() => {
