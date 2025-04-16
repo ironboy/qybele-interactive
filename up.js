@@ -20,7 +20,6 @@
 
   async function addModuleScript(currentScript) {
     if (document.querySelector('head script#qybele-interactive-nh')) { return; }
-    console.log(currentScript);
     let src = currentScript.getAttribute('src');
     let version = src.split('?')[1];
     const dir = src.split('/').slice(0, -1).join('/');
