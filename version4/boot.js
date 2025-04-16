@@ -47,6 +47,7 @@
       await sleep(20);
     }
     globalThis.__qybeleInteractiveMain(content);
+    console.log("TWICE HERE?");
   }
   console.log("TWICCE?");
   boot();
