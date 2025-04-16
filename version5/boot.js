@@ -46,9 +46,10 @@
       if (globalThis.__qybeleInteractiveMain) { break; }
       await sleep(20);
     }
-    globalThis.__qybeleInteractiveMain(content);
-    console.log("TWICE HERE?");
+    if (content.attr('qybele-interactive-post-processing-done') !== 'yes') {
+      await globalThis.__qybeleInteractiveMain(content);
+      content.attr('qybele-interactive-post-processing-done', 'yes');
+    }
   }
-  console.log("TWICCE?");
   boot();
 })();

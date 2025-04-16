@@ -1,5 +1,5 @@
 import testAddContent from './testAddContent.js';
 
-globalThis.__qybeleInteractiveMain = function (content) {
+globalThis.__qybeleInteractiveMain = async function (content) {
   testAddContent(content);
 };
