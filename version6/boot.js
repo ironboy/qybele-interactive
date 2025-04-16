@@ -46,9 +46,10 @@
       if (globalThis.__qybeleInteractiveMain) { break; }
       await sleep(20);
     }
-    if (content.attr('qybele-interactive-post-processing-done') !== 'yes') {
+    const attr = 'data-qybele-interactive-post-processing-done';
+    if (content.attr(attr) !== 'yes') {
       await globalThis.__qybeleInteractiveMain(content);
-      content.attr('qybele-interactive-post-processing-done', 'yes');
+      content.attr(attr, 'yes');
     }
   }
   boot();
