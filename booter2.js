@@ -42,17 +42,18 @@
   }
 
   async function boot() {
+    await addModuleScript();
     const content = await waitForContent();
     const attr = 'data-qybele-interactive-post-processing-done';
-    await addModuleScript();
-    while (true) {
-      if (globalThis.__qybeleInteractiveMain) { break; }
-      await sleep(20);
-    }
     if (content.attr(attr) !== 'yes') {
+      while (true) {
+        if (globalThis.__qybeleInteractiveMain) { break; }
+        await sleep(20);
+      }
       await globalThis.__qybeleInteractiveMain(content);
       content.attr(attr, 'yes');
     }
   }
+
   boot();
 })();
