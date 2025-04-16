@@ -15,11 +15,12 @@
 
   const sleep = ms => new Promise(res => setTimeout(res, ms));
 
-  function addModuleScript() {
+  async function addModuleScript() {
     if (document.querySelector('head script#qybele-interactive-nh')) { return; }
+    let version = await (await fetch('https://raw.githubusercontent.com/ironboy/qybele-interactive/refs/heads/main/version.txt')).text();
     const dir = document.currentScript.getAttribute('src').split('/').slice(0, -1).join('/');
     const moduleScriptTag = document.createElement('script');
-    moduleScriptTag.setAttribute('src', dir + '/index.js');
+    moduleScriptTag.setAttribute('src', dir + `/version{$version}/index.js`);
     moduleScriptTag.setAttribute('type', 'module');
     moduleScriptTag.setAttribute('id', 'qybele-interactive-nh');
     document.querySelector('head').append(moduleScriptTag);
@@ -40,13 +41,13 @@
   }
 
   async function boot() {
-    addModuleScript();
     const content = await waitForContent();
     while (true) {
       if (globalThis.__qybeleInteractiveMain) { break; }
       await sleep(20);
     }
     const attr = 'data-qybele-interactive-post-processing-done';
+    await addModuleScript();
     if (content.attr(attr) !== 'yes') {
       await globalThis.__qybeleInteractiveMain(content);
       content.attr(attr, 'yes');
