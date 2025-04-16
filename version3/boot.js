@@ -48,6 +48,6 @@
     }
     globalThis.__qybeleInteractiveMain(content);
   }
-
+  console.log("TWICCE?");
   boot();
 })();
