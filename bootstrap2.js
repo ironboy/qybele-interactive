@@ -52,7 +52,7 @@
         if (globalThis.__qybeleInteractiveMain) { break; }
         await sleep(20);
       }
-      await globalThis.__qybeleInteractiveMain(content);
+      globalThis.__qybeleInteractiveMain(content);
       content.attr(attr, 'yes');
     }
   }
