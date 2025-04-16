@@ -29,9 +29,9 @@
     document.querySelector('head').append(moduleScriptTag);
   }
 
-  async function waitForContent() {
+  async function waitForContent(currentScript) {
     let $ = jQuery;
-    const thisScriptTag = $(document.currentScript);
+    const thisScriptTag = $(currentScript);
     const htmlStructure = [...thisScriptTag.parents()];
     const mainParent = htmlStructure[1];
     let content;
@@ -45,8 +45,9 @@
   }
 
   async function boot() {
-    await addModuleScript(document.currentScript);
-    const content = await waitForContent();
+    let scriptTag = document.currentScript;
+    await addModuleScript(scriptTag);
+    const content = await waitForContent(scriptTag);
     const attr = 'data-qybele-interactive-post-processing-done';
     if (content.attr(attr) !== 'yes') {
       while (true) {
