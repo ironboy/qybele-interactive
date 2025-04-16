@@ -7,6 +7,7 @@ export default function hilite(content) {
       .replace(/<br>/g, '\n')
       .replace(/℅/g, '&lt;')
       .replace(/℆/g, '&t;');
+    console.log(html);
     globalThis.__qybeleInteractivePrismCodeList(this, html, true);
   });
 }
