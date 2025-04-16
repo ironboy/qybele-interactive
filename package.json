@@ -1,0 +1,20 @@
+{
+  "name": "qybele-interactive",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ironboy/qybele-interactive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ironboy/qybele-interactive/issues"
+  },
+  "homepage": "https://github.com/ironboy/qybele-interactive#readme",
+  "description": ""
+}
