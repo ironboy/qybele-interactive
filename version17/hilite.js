@@ -6,9 +6,9 @@ export default function hilite(content) {
     let html = $(this).html()
       .replace(/<br>/g, '\n')
       .replace(/℅/g, '&lt;')
-      .replace(/℆/g, '&t;');
+      .replace(/℆/g, '&gt;');
     let settings = $(this).attr('data-code-details');
-    html = `<pre data-code-details="">${html}</pre>`;
+    html = `<pre data-code-details="${settings}">${html}</pre>`;
     console.log(html);
     globalThis.__qybeleInteractivePrismCodeList(this, html, true);
   });
