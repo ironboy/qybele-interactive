@@ -14,6 +14,24 @@
 
   So here we get the content element and load the es6 module (index.js)
 */
+
+// A small abstraction for local storage
+if (!globalThis._qyistore) {
+  const g = globalThis, p = '_qyistore';
+  try {
+    g[p] = JSON.parse(localStorage[p]);
+  }
+  catch (_e) { g[p] = {}; }
+  g[p].save = function () {
+    localStorage[p] = JSON.stringify(this, null, '  ');
+  };
+  g[p].clear = function () {
+    g[p] = {};
+    localStorage[p] = '{}';
+  };
+}
+
+// Boot up
 (() => {
 
   const sleep = ms => new Promise(res => setTimeout(res, ms));
@@ -53,8 +71,20 @@
     `;
   }
 
+  async function checkVersion() {
+    let storedVersion = globalThis._qyistore.version;
+    let onlineVersion = await (await fetch('https://raw.githubusercontent.com/ironboy/qybele-interactive/refs/heads/main/version.txt')).text();
+    if (storedVersion !== onlineVersion) {
+      globalThis._qyistore.version = onlineVersion;
+      location.reload();
+    }
+  }
+
   async function boot() {
     let scriptTag = document.currentScript;
+    checkVersion();
+    let version = globalThis._qyistore.version;
+    if (!version) { return; }
     hideCodeListingsInitially();
     await addModuleScript(scriptTag);
     const content = await waitForContent(scriptTag);
