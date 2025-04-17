@@ -23,7 +23,7 @@ if (!globalThis._qyistore) {
   }
   catch (_e) { g[p] = {}; }
   g[p].save = function () {
-    localStorage[p] = JSON.stringify(this, null, '  ');
+    localStorage[p] = JSON.stringify(this);
   };
   g[p].clear = function () {
     g[p] = {};
