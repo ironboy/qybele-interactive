@@ -75,6 +75,7 @@ if (!globalThis._qyistore) {
     let onlineVersion = await (await fetch('https://raw.githubusercontent.com/ironboy/qybele-interactive/refs/heads/main/version.txt')).text();
     if (storedVersion !== onlineVersion) {
       globalThis._qyistore.version = onlineVersion;
+      globalThis._qyistore.save();
       location.reload();
     }
   }
