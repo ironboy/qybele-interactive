@@ -36,10 +36,9 @@ if (!globalThis._qyistore) {
 
   const sleep = ms => new Promise(res => setTimeout(res, ms));
 
-  async function addModuleScript(currentScript) {
+  async function addModuleScript(currentScript, version) {
     if (document.querySelector('head script#qybele-interactive-nh')) { return; }
     let src = currentScript.getAttribute('src');
-    let version = src.split('?')[1];
     const dir = src.split('/').slice(0, -1).join('/');
     const moduleScriptTag = document.createElement('script');
     moduleScriptTag.setAttribute('src', dir + `/version${version}/index.js`);
@@ -86,7 +85,7 @@ if (!globalThis._qyistore) {
     let version = globalThis._qyistore.version;
     if (!version) { return; }
     hideCodeListingsInitially();
-    await addModuleScript(scriptTag);
+    await addModuleScript(scriptTag, version);
     const content = await waitForContent(scriptTag);
     const attr = 'data-qybele-interactive-post-processing-done';
     if (content.attr(attr) !== 'yes') {
