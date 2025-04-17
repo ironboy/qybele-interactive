@@ -84,6 +84,7 @@ if (!globalThis._qyistore) {
     checkVersion();
     let version = globalThis._qyistore.version;
     if (!version) { return; }
+    console.info('Qybele Interactive v', version);
     hideCodeListingsInitially();
     await addModuleScript(scriptTag, version);
     const content = await waitForContent(scriptTag);
