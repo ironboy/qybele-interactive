@@ -63,7 +63,10 @@ async function themePreloader(dir, toPreload) {
   globalThis.preloadedThemes = [];
   await sleep(5000);
   for (let { importName } of toPreload) {
-    await fetch(dir + `/prism/themes/${importName}.css`);
+    while (true) {
+      const response = await fetch(dir + `/prism/themes/${importName}.css`);
+      if (response.status === 200) { break; };
+    }
     await sleep(500);
   }
 }
