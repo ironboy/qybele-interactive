@@ -3,6 +3,7 @@ import './hilighter/dist.js';
 // Don't collide CSS with Prism loaded by Qybele initially
 const cssLink = document.querySelector('link[href*="prism"]');
 cssLink && cssLink.remove();
+globalThis.Prism = () => { console.log('called'); };
 
 export default function hilite(content) {
   $('pre[data-code-details]').each(function () {
