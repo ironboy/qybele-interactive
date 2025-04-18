@@ -4,16 +4,6 @@ import './hilighter/dist.js';
 const cssLink = document.querySelector('link[href*="prism"]');
 cssLink && cssLink.remove();
 
-// Turn off global Prism, since it
-// messes a bit with wrapping our code listings in new elements
-const handler = {
-  get(target, prop) {
-    console.log('prism block', target, prop);
-    return new Proxy(() => '', handler);
-  }
-};
-globalThis.Prism = new Proxy({}, handler);
-
 export default function hilite(content) {
   $('pre[data-code-details]').each(function () {
     let orgHtml = $(this).html();
