@@ -24,7 +24,9 @@ export async function importPrismLanguage(lang) {
 }
 
 globalThis.themeContentCache = {};
-export async function importPrismTheme(themeName, dir) {
+
+export async function importPrismTheme(themeName, dir, toPreload) {
+  if (!globalThis.preloadedThemes && toPreload) { themePreloader(dir, toPreload); }
   const sleep = ms => new Promise(res => setTimeout(res, ms));
   if (!themes.includes(themeName)) { return false; }
   let themeContent = themeContentCache[themeName];
@@ -51,4 +53,17 @@ export async function importPrismTheme(themeName, dir) {
   styleEl.textContent = `.${className} {\n${themeContent}\n}`;
   document.querySelector('head').append(styleEl);
   return darkOrLight(themeName);
+}
+
+function sleep(ms) {
+  return new Promise(res => setTimeout(res, ms));
+}
+
+async function themePreloader(dir, toPreload) {
+  globalThis.preloadedThemes = [];
+  await sleep(5000);
+  for (let { importName } of toPreload) {
+    await fetch(dir + `/prism/themes/${importName}.css`);
+    await sleep(500);
+  }
 }
