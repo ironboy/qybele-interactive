@@ -24,13 +24,13 @@ export async function importPrismLanguage(lang) {
 }
 
 globalThis.themeContentCache = {};
-export async function importPrismTheme(themeName) {
+export async function importPrismTheme(themeName, dir) {
   const sleep = ms => new Promise(res => setTimeout(res, ms));
   if (!themes.includes(themeName)) { return false; }
   let themeContent = themeContentCache[themeName];
   if (!themeContent) {
     themeContentCache[themeName] = true;
-    let fetched = await (await fetch(`/prism/themes/${themeName}.css`)).text();
+    let fetched = await (await fetch(dir + `/prism/themes/${themeName}.css`)).text();
     themeContentCache[themeName] = fetched;
   }
   while (typeof themeContentCache[themeName] === 'boolean') {
