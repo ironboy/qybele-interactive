@@ -7,10 +7,10 @@ cssLink && cssLink.remove();
 const handler = {
   get(target, prop) {
     console.log('prism block', target, prop);
-    return new Proxy(() => { }, handler);
+    return new Proxy(() => { return new Proxy({}, handler); }, handler);
   }
 };
-globalThis.Prism = new Proxy(handler);
+globalThis.Prism = new Proxy({}, handler);
 
 export default function hilite(content) {
   $('pre[data-code-details]').each(function () {
