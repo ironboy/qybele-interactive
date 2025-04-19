@@ -83,7 +83,9 @@ if (!globalThis._qyistore) {
   function maxWidths() {
     // Slightly wider max-width, 750px -> 850px
     // Makes for better code-listings and still good text width!
-    $('.resource_content_container, .module_content, .admin_tools').css({ maxWidth: 850 });
+    let a = $('.resource_content_container, .module_content, .admin_tools');
+    console.log(a.length);
+    a.css({ maxWidth: 850 });
   }
 
   async function boot() {
