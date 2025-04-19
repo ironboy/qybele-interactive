@@ -83,30 +83,33 @@ if (!globalThis._qyistore) {
   function maxWidths() {
     // Slightly wider max-width, 750px -> 850px
     // Makes for better code-listings and still good text width!
-    let a = $('.resource_content_container, .module_content, .admin_tools');
-    console.log(a.length);
-    a.css({ maxWidth: 850 });
-  }
-
-  async function boot() {
-    let scriptTag = document.currentScript;
-    maxWidths();
-    checkVersion();
-    let version = globalThis._qyistore.version;
-    if (!version) { return; }
-    hideCodeListingsInitially();
-    await addModuleScript(scriptTag, version);
-    const content = await waitForContent(scriptTag);
-    const attr = 'data-qybele-interactive-post-processing-done';
-    if (content.attr(attr) !== 'yes') {
-      while (true) {
-        if (globalThis.__qybeleInteractiveMain) { break; }
-        await sleep(20);
-      }
-      globalThis.__qybeleInteractiveMain(content);
-      content.attr(attr, 'yes');
+    let co = 0;
+    while (co++ < 10) {
+      let els = $('.resource_content_container, .module_content, .admin_tools');
+      els.css({ maxWidth: 850 });
+      if (els.length === 3) { break; }
+      console.log(els.length, co);
     }
-  }
 
-  boot();
-})();
+    async function boot() {
+      let scriptTag = document.currentScript;
+      maxWidths();
+      checkVersion();
+      let version = globalThis._qyistore.version;
+      if (!version) { return; }
+      hideCodeListingsInitially();
+      await addModuleScript(scriptTag, version);
+      const content = await waitForContent(scriptTag);
+      const attr = 'data-qybele-interactive-post-processing-done';
+      if (content.attr(attr) !== 'yes') {
+        while (true) {
+          if (globalThis.__qybeleInteractiveMain) { break; }
+          await sleep(20);
+        }
+        globalThis.__qybeleInteractiveMain(content);
+        content.attr(attr, 'yes');
+      }
+    }
+
+    boot();
+  }) ();
