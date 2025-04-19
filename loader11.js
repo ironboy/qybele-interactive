@@ -90,26 +90,27 @@ if (!globalThis._qyistore) {
       if (els.length === 3) { break; }
       console.log(els.length, co);
     }
+  }
 
-    async function boot() {
-      let scriptTag = document.currentScript;
-      maxWidths();
-      checkVersion();
-      let version = globalThis._qyistore.version;
-      if (!version) { return; }
-      hideCodeListingsInitially();
-      await addModuleScript(scriptTag, version);
-      const content = await waitForContent(scriptTag);
-      const attr = 'data-qybele-interactive-post-processing-done';
-      if (content.attr(attr) !== 'yes') {
-        while (true) {
-          if (globalThis.__qybeleInteractiveMain) { break; }
-          await sleep(20);
-        }
-        globalThis.__qybeleInteractiveMain(content);
-        content.attr(attr, 'yes');
+  async function boot() {
+    let scriptTag = document.currentScript;
+    maxWidths();
+    checkVersion();
+    let version = globalThis._qyistore.version;
+    if (!version) { return; }
+    hideCodeListingsInitially();
+    await addModuleScript(scriptTag, version);
+    const content = await waitForContent(scriptTag);
+    const attr = 'data-qybele-interactive-post-processing-done';
+    if (content.attr(attr) !== 'yes') {
+      while (true) {
+        if (globalThis.__qybeleInteractiveMain) { break; }
+        await sleep(20);
       }
+      globalThis.__qybeleInteractiveMain(content);
+      content.attr(attr, 'yes');
     }
+  }
 
-    boot();
-  }) ();
+  boot();
+})();
