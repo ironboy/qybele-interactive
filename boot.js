@@ -80,12 +80,19 @@ if (!globalThis._qyistore) {
     }
   }
 
+  function maxWidths() {
+    // Slightly wider max-width, 750px -> 850px
+    // Makes for better code-listings and still good text width!
+    $('.resource_content_container, .module_content').css({ maxWidth: 850 });
+    $('.admin_tools').css({ maxWidth: '' });
+  }
+
   async function boot() {
     let scriptTag = document.currentScript;
+    maxWidths();
     checkVersion();
     let version = globalThis._qyistore.version;
     if (!version) { return; }
-    console.info('Qybele Interactive v', version);
     hideCodeListingsInitially();
     await addModuleScript(scriptTag, version);
     const content = await waitForContent(scriptTag);

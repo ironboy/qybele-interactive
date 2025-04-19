@@ -4,7 +4,7 @@ import './hilighter/dist.js';
 const cssLink = document.querySelector('link[href*="prism"]');
 cssLink && cssLink.remove();
 
-export default function hilite(content) {
+export default function hilite() {
   $('pre[data-code-details]').each(function () {
     let orgHtml = $(this).html();
     let html = orgHtml
