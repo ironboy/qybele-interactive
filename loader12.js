@@ -80,7 +80,7 @@ if (!globalThis._qyistore) {
     }
   }
 
-  function maxWidths() {
+  async function maxWidths() {
     // Slightly wider max-width, 750px -> 850px
     // Makes for better code-listings and still good text width!
     let co = 0;
@@ -89,6 +89,7 @@ if (!globalThis._qyistore) {
       els.css({ maxWidth: 850 });
       if (els.length === 3) { break; }
       console.log(els.length, co);
+      await sleep(200);
     }
   }
 
