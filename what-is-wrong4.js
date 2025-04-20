@@ -108,7 +108,7 @@ if (!globalThis._qyistore) {
     await addModuleScript(scriptTag, version);
     const content = await waitForContent(scriptTag);
     const attr = 'data-qybele-interactive-post-processing-done';
-    console.log('attr', (content.attr(attr))
+    console.log('attr', content.attr(attr));
     if (content.attr(attr) !== 'yes') {
       while (true) {
         if (globalThis.__qybeleInteractiveMain) { break; }
