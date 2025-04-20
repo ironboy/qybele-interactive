@@ -48,7 +48,13 @@ if (!globalThis._qyistore) {
   }
 
   async function waitForContent(currentScript) {
-    let $ = jQuery;
+    let $, co = 0;
+    while (co++ < 10) {
+      $ = globalThis.jQuery;
+      if ($) { break; }
+      console.log("HERE");
+      await sleep(100);
+    }
     const thisScriptTag = $(currentScript);
     const htmlStructure = [...thisScriptTag.parents()];
     const mainParent = htmlStructure[1];
@@ -88,7 +94,6 @@ if (!globalThis._qyistore) {
       let els = $('.resource_content_container, .module_content, .admin_tools');
       els.css({ maxWidth: 850 });
       if (els.length === 3) { break; }
-      console.log(els.length, co);
       await sleep(200);
     }
   }
