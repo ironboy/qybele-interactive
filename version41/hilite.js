@@ -6,7 +6,7 @@ cssLink && cssLink.remove();
 
 export default function hilite() {
   $('pre[data-code-details]').each(function () {
-    if ($(this).parents('[data-qybele-interactive-post-processing-done="yes"]')) { return; }
+    if ($(this).parents('[data-qybele-interactive-post-processing-done="yes"]').length) { return; }
     let orgHtml = $(this).html();
     let html = orgHtml
       .replace(/<br>/g, '\n')
