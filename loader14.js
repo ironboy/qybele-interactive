@@ -49,11 +49,10 @@ if (!globalThis._qyistore) {
 
   async function waitForContent(currentScript) {
     let $, co = 0;
-    while (co++ < 10) {
+    while (co++ < 50) {
       $ = globalThis.jQuery;
       if ($) { break; }
-      console.log("HERE");
-      await sleep(100);
+      await sleep(50);
     }
     const thisScriptTag = $(currentScript);
     const htmlStructure = [...thisScriptTag.parents()];
@@ -90,11 +89,11 @@ if (!globalThis._qyistore) {
     // Slightly wider max-width, 750px -> 850px
     // Makes for better code-listings and still good text width!
     let co = 0;
-    while (co++ < 10) {
+    while (co++ < 20) {
       let els = $('.resource_content_container, .module_content, .admin_tools');
       els.css({ maxWidth: 850 });
       if (els.length === 3) { break; }
-      await sleep(200);
+      await sleep(100);
     }
   }
 
