@@ -26,7 +26,7 @@ export async function importPrismLanguage(lang) {
 globalThis.themeContentCache = {};
 
 export async function importPrismTheme(themeName, dir, toPreload) {
-  if (!globalThis.preloadedThemes && toPreload) { themePreloader(dir, toPreload); }
+  if (!globalThis.preloadingStarted && toPreload) { themePreloader(dir, toPreload); }
   const sleep = ms => new Promise(res => setTimeout(res, ms));
   if (!themes.includes(themeName)) { return false; }
   let themeContent = themeContentCache[themeName];
@@ -60,13 +60,18 @@ function sleep(ms) {
 }
 
 async function themePreloader(dir, toPreload) {
-  globalThis.preloadedThemes = [];
+  const g = globalThis;
+  g.preloadingStarted = true;
   await sleep(5000);
   for (let { importName } of toPreload) {
+    g._qyistore.preloadedThemes = g._qyistore.preloadedThemes || [];
+    if (g._qyistore.preloadedThemes.includes(importName)) { continue; }
     while (true) {
       const response = await fetch(dir + `/prism/themes/${importName}.css`);
       if (response.status === 200) { break; };
     }
+    g._qyistore.preloadedThemes.push(importName);
+    g._qyistore.save();
     await sleep(500);
   }
 }
