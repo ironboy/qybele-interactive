@@ -99,6 +99,7 @@ if (!globalThis._qyistore) {
 
   async function boot() {
     let scriptTag = document.currentScript;
+    console.log("AND SO WE BEGIN", scriptTag);
     maxWidths();
     checkVersion();
     let version = globalThis._qyistore.version;
