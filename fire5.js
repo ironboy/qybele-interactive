@@ -60,7 +60,7 @@ if (!globalThis._qyistore) {
     console.log(mainParent);
     let content;
     while (true) {
-      content = $(mainParent).find('.module_content');
+      content = $($(mainParent)[0].closest('.module_content'));
       if (content.html()) { break; }
       await sleep(20);
     }
