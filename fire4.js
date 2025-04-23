@@ -57,6 +57,7 @@ if (!globalThis._qyistore) {
     const thisScriptTag = $(currentScript);
     const htmlStructure = [...thisScriptTag.parents()];
     const mainParent = htmlStructure[1];
+    console.log(mainParent);
     let content;
     while (true) {
       content = $(mainParent).find('.module_content');
