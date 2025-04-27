@@ -10,8 +10,9 @@ export default function hilite() {
     let orgHtml = $(this).html();
     let html = orgHtml
       .replace(/<br>/g, '\n')
-      .replace(/℅/g, '&lt;')
-      .replace(/℆/g, '&gt;');
+      // special full wisth less than and greater than here! important!
+      .replace(/＜/g, '&lt;')
+      .replace(/＞/g, '&gt;');
     let settings = $(this).attr('data-code-details');
     html = `<pre data-code-details="${settings}">${html}</pre>`;
     let div = $(`<div>${orgHtml}</div>`);
