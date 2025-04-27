@@ -8,9 +8,10 @@ export default function hilite() {
   $('pre[data-code-details]').each(function () {
     if ($(this).parents('[data-qybele-interactive-post-processing-done="yes"]').length) { return; }
     let orgHtml = $(this).html();
+    console.log(orgHtml);
     let html = orgHtml
       .replace(/<br>/g, '\n')
-      // special full wisth less than and greater than here! important!
+      // special full width less than and greater than here! important!
       .replace(/＜/g, '&lt;')
       .replace(/＞/g, '&gt;');
     let settings = $(this).attr('data-code-details');
