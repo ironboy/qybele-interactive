@@ -16,7 +16,8 @@ export default function saverMod(...args) {
       saveContentInQybele(content);
       return;
     }
-    orgSubmit.apply(this, args);
+    console.log(specialSend, content);
+    //orgSubmit.apply(this, args);
   };
 }
 
