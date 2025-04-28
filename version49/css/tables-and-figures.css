@@ -105,3 +105,10 @@ section.module_content>div:has(pre)+strong {
     content: 'Figure: '
   }
 }
+
+.inter-react-logo {
+  opacity: 0;
+  width: 1;
+  height: 1;
+  overflow: hidden;
+}
