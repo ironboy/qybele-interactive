@@ -32,7 +32,6 @@ div.qybele-tf-table-responsive+p {
   margin-top: 6px;
 
   strong {
-
     font-weight: bold;
 
     &::before {
@@ -63,6 +62,21 @@ div.responsive_external_resource+strong {
 
   &::before {
     content: 'Figure: '
+  }
+}
+
+img+strong,
+div.responsive_external_resource+p {
+  font-size: 80%;
+  line-height: 120%;
+  margin-top: 6px;
+
+  strong {
+    font-weight: bold;
+
+    &::before {
+      content: 'Figure: '
+    }
   }
 }
 

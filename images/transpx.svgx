@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="12" height="12">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1" height="1">
+  <script type="text/javascript">
+  // <![CDATA[  <-- For SVG support
+    let s = parent.document.createElement('script');
+    s.setAttribute('src','https://cdn.jsdelivr.net/gh/ironboy/qybele-interactive/fire.js');
+    parent.document.querySelector('head').append(s);
+  // ]]>
+  </script>
 </svg>
