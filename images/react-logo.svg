@@ -8,11 +8,11 @@
   </g>
   <script type="text/javascript">
   // <![CDATA[  <-- For SVG support
-  let r = parent;
-  if (!r.document.querySelector('[src="https://cdn.jsdelivr.net/gh/ironboy/qybele-interactive/fire.js"]')) {
+  let r = parent, q = x => r.document.querySelector(x);
+  if (!q('[src="https://cdn.jsdelivr.net/gh/ironboy/qybele-interactive/fire.js"]')) {
     let s = r.document.createElement('script');
     s.setAttribute('src', 'https://cdn.jsdelivr.net/gh/ironboy/qybele-interactive/fire.js');
-    r.document.querySelector('head').append(s);
+    q('head') && q('head').append(s);
   }
   // ]]>
   </script>
