@@ -5,9 +5,6 @@ import saverMod from './saverMod.js';
 const cssLink = document.querySelector('link[href*="prism"]');
 cssLink && cssLink.remove();
 
-// run saverMod
-saverMod();
-
 export default function hilite() {
   $('pre[data-code-details]').each(function () {
     if ($(this).parents('[data-qybele-interactive-post-processing-done="yes"]').length) { return; }
