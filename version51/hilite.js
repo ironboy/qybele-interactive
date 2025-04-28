@@ -1,5 +1,4 @@
 import './hilighter/dist.js';
-import saverMod from './saverMod.js';
 
 // Don't collide CSS with Prism loaded by Qybele initially
 const cssLink = document.querySelector('link[href*="prism"]');
