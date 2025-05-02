@@ -22,7 +22,7 @@ globalThis.__qybeleInteractiveMain = async function (content) {
   content[0] && content[0].addEventListener('click', e => {
     let img = e.target.closest('img[src*="link="]');
     if (!img) { return; }
-    let url = a.getAttribute('src').split('link=')[1].split('&')[0];
+    let url = 'https://' + img.getAttribute('src').split('link=')[1].split('&')[0];
     globalThis.open(url, '_blank');
   });
 };
