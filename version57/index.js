@@ -18,6 +18,13 @@ globalThis.__qybeleInteractiveMain = async function (content) {
       a.setAttribute('target', '_blank');
     }
   });
+  // follow links on images that have links in url/src
+  content[0] && content[0].addEventListener('click', e => {
+    let img = e.target.closest('img[src*="link="]');
+    if (!img) { return; }
+    let url = a.getAttribute('src').split('link=')[1].split('&')[0];
+    globalThis.open(url, '_blank');
+  });
 };
 
 globalThis.__qybeleInteractiveMain();
