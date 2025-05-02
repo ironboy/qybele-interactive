@@ -4,7 +4,7 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 let hasRun = false;
 globalThis.__qybeleInteractiveMain = async function (content) {
-  if (hasRun) { return; }
+  // if (hasRun) { return; }
   hasRun = true;
   while (true) {
     content = content || $('section.module_content');

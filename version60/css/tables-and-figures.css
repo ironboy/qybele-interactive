@@ -118,7 +118,7 @@ img[src*="link="] {
 }
 
 @media only screen and (max-width: 600px) {
-  img[src="height="] {
+  img[src*="height="] {
     padding-left: 20px;
     padding-bottom: 10px;
   }
