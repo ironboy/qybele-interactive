@@ -1,10 +1,16 @@
 import hilite from './hilite.js';
 
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+
 let hasRun = false;
 globalThis.__qybeleInteractiveMain = async function (content) {
   if (hasRun) { return; }
   hasRun = true;
-  content = content || $('section.module_content');
+  while (true) {
+    content = content || $('section.module_content');
+    if (content.length) { break; }
+    await sleep(200);
+  }
   hilite(content);
   let dir = import.meta.url.split('/').slice(0, -1).join('/');
   $('head').append(`<link rel="stylesheet" href="${dir}/css/tables-and-figures.css">`);
