@@ -116,3 +116,10 @@ section.module_content>div:has(pre)+strong {
 img[src*="link="] {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  img[src="height="] {
+    padding-left: 20px;
+    padding-bottom: 10px;
+  }
+}
