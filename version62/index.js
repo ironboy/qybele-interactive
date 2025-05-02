@@ -10,6 +10,9 @@ globalThis.__qybeleInteractiveMain = async function (content) {
     await sleep(200);
   }
   hilite();
+  // width adjustment
+  let els = $('.resource_content_container, .module_content, .admin_tools');
+  els.css({ maxWidth: 850 });
   if (!hasRun) { // once!
     // add stylesheet
     let dir = import.meta.url.split('/').slice(0, -1).join('/');
