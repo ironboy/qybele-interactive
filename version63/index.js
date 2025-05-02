@@ -18,8 +18,8 @@ globalThis.__qybeleInteractiveMain = async function (content) {
     let dir = import.meta.url.split('/').slice(0, -1).join('/');
     $('head').append(`<link rel="stylesheet" href="${dir}/css/tables-and-figures.css">`);
     // open external links in a new window
-    content[0] && content[0].addEventListener('click', e => {
-      let a = e.target.closest('a');
+    document.body.addEventListener('click', e => {
+      let a = e.target.closest('section.module_content a');
       if (!a) { return; }
       let href = a.getAttribute('href');
       if (!href) { return; }
@@ -28,8 +28,8 @@ globalThis.__qybeleInteractiveMain = async function (content) {
       }
     });
     // follow links on images that have links in url/src
-    content[0] && content[0].addEventListener('click', e => {
-      let img = e.target.closest('img[src*="link="]');
+    document.body.addEventListener('click', e => {
+      let img = e.target.closest('section.module_content img[src*="link="]');
       if (!img) { return; }
       let url = 'https://' + img.getAttribute('src').split('link=')[1].split('&')[0];
       globalThis.open(url, '_blank');
