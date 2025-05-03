@@ -1,5 +1,6 @@
 import hilite from './hilite.js';
 
+const g = globalThis;
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 let hasRun = false;
