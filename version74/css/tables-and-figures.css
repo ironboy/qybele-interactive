@@ -139,3 +139,30 @@ section.module_content p:empty {
 section.module_content img[src*="link="]:hover {
   filter: saturate(200%) drop-shadow(2px 2px 2px #aaa);
 }
+
+/* lists */
+section.module_content {
+
+  ul,
+  ol {
+    margin-bottom: 25px;
+  }
+
+  li {
+    margin-bottom: 5px
+  }
+
+  p+ul,
+  p+ol {
+    margin-top: -15px;
+    margin-bottom: 25px;
+  }
+
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
