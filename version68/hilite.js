@@ -16,9 +16,6 @@ export default function hilite() {
     html = `<pre data-code-details="${settings}">${html}</pre>`;
     let div = $(`<div>${orgHtml}</div>`);
     $(this).replaceWith(div);
-    try {
-      globalThis.__qybeleInteractivePrismCodeList(div[0], html, true);
-    }
-    catch (_e) { location.reload(); }
+    globalThis.__qybeleInteractivePrismCodeList(div[0], html, true);
   });
 }
