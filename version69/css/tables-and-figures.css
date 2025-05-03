@@ -123,3 +123,8 @@ img[src*="link="] {
     padding-bottom: 10px;
   }
 }
+
+/* strange empty p-tags are inserted - hide those */
+section.module_content p:empty {
+  display: none;
+}
