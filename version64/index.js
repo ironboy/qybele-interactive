@@ -3,7 +3,7 @@ import hilite from './hilite.js';
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 let hasRun = false;
-globalThis.__qybeleInteractiveMain = async function (content) {
+async function boot(content) {
   while (true) {
     content = content || $('section.module_content');
     if (content.length) { break; }
@@ -38,5 +38,7 @@ globalThis.__qybeleInteractiveMain = async function (content) {
   hasRun = true;
 };
 
-globalThis.__qybeleInteractiveMain();
-setInterval(() => globalThis.__qybeleInteractiveMain(), 1000);
+// Entry point - boot
+g.__qyinterstartBoot = () => {
+  boot();
+};
