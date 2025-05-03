@@ -128,3 +128,8 @@ img[src*="link="] {
 section.module_content p:empty {
   display: none;
 }
+
+/* animate images with links */
+section.module_content img[src*="link="]:hover {
+  filter: saturate(200%) drop-shadow(2px 2px 2px #aaa);
+}
