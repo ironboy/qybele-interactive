@@ -6,7 +6,6 @@ cssLink && cssLink.remove();
 
 export default function hilite() {
   $('pre[data-code-details]').each(function () {
-    console.log(this.outerHTML);
     let orgHtml = $(this).html();
     let html = orgHtml
       .replace(/<br>/g, '\n')
@@ -17,6 +16,9 @@ export default function hilite() {
     html = `<pre data-code-details="${settings}">${html}</pre>`;
     let div = $(`<div>${orgHtml}</div>`);
     $(this).replaceWith(div);
-    globalThis.__qybeleInteractivePrismCodeList(div[0], html, true);
+    try {
+      globalThis.__qybeleInteractivePrismCodeList(div[0], html, true);
+    }
+    catch (_e) { location.reload(); }
   });
 }
