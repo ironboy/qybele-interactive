@@ -165,4 +165,10 @@ section.module_content {
     margin-top: 0px;
     margin-bottom: 0px;
   }
+
+  a {
+    font-weight: bold;
+    color: #0c4dbf;
+    text-decoration: none;
+  }
 }
