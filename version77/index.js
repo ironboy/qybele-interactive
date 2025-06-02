@@ -1,7 +1,7 @@
 import hilite from './hilite.js';
 
 const g = globalThis;
-g.hilite = hilite;
+g.__qybele_interactive_hilite = hilite;
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
