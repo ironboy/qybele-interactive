@@ -90,7 +90,8 @@ samp[class*="language-"] span.line-no {
   height: 20px;
 }
 
-.samp-listing .copy-icon:hover {
+.samp-listing .copy-icon:hover,
+.samp-listing .settings-icon:hover {
   opacity: 1;
 }
 
@@ -115,8 +116,20 @@ samp[class*="language-"] span.line-no {
 
 .samp-listing .settings-icon .settings {
   right: initial;
-  left: -12px;
+  left: -3px;
   margin-top: 3px;
+}
+
+.samp-listing.linesMoreThanTwo .copied,
+.samp-listing.linesMoreThanTwo .settings {
+  right: 40px;
+  left: initial;
+  top: 0;
+}
+
+.samp-listing.linesMoreThanTwo .settings {
+  right: 30px;
+  top: -4px;
 }
 
 .samp-listing .copy-icon .copied.show,
