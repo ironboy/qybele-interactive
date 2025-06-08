@@ -102,6 +102,7 @@ samp[class*="language-"] span.line-no {
 
 .samp-listing .copy-icon .copied,
 .samp-listing .settings-icon .settings {
+  line-height: 1;
   position: absolute;
   background-color: #ddd;
   border: 1px solid #000;
@@ -124,12 +125,12 @@ samp[class*="language-"] span.line-no {
 .samp-listing.linesMoreThanTwo .settings {
   right: 40px;
   left: initial;
-  top: 0;
+  top: 3px;
 }
 
 .samp-listing.linesMoreThanTwo .settings {
   right: 30px;
-  top: -4px;
+  top: -3px;
 }
 
 .samp-listing .copy-icon .copied.show,
