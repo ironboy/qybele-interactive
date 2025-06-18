@@ -16,8 +16,10 @@ if (localStorage.restoreJsResourceMenuScrollPosTo) {
   delete localStorage.restoreJsResourceMenuScrollPosTo;
   while (!document.querySelector('#js-resource_menu')) {
     await sleep(100);
-    document.querySelector('#js-resource_menu').scrollTop = pos;
+    console.log("WAITING");
   }
+  document.querySelector('#js-resource_menu').scrollTop = pos;
+  console.log("RESTORED");
 }
 // end fix
 
