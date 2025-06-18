@@ -17,9 +17,8 @@ export async function importPrismLanguage(lang) {
     let lang = importArr.find(x => x.startsWith('*')).slice(1);
     importArr.splice(index, 1, ...deps[lang]);
   }
-  console.log('HEJ NO CACHE FIX', lang, importArr);
   for (let lang of importArr) {
-    await import(`./langs/${lang}.js` + '?' + Math.random());
+    await import(`./langs/${lang}.js`);
   }
   return lang;
 }

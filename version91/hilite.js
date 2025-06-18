@@ -16,7 +16,6 @@ export default function hilite() {
     if (!settings.split('[')[0]) {
       settings = 'markdown' + settings;
     }
-    console.log("SETTINGS", settings);
     html = `<pre data-code-details="${settings}">${html}</pre>`;
     let div = $(`<div>${orgHtml}</div>`);
     $(this).replaceWith(div);
