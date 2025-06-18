@@ -17,6 +17,7 @@ export async function importPrismLanguage(lang) {
     let lang = importArr.find(x => x.startsWith('*')).slice(1);
     importArr.splice(index, 1, ...deps[lang]);
   }
+  console.log('HEJ', lang, importArr);
   for (let lang of importArr) {
     await import(`./langs/${lang}.js`);
   }
