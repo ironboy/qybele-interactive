@@ -8,7 +8,7 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
 globalThis._reloadOnGrammarError = () => {
   localStorage.restoreJsResourceMenuScrollPosTo =
     document.querySelector('#js-resource_menu').scrollTop;
-  location.replace();
+  location.reload();
 };
 
 if (localStorage.restoreJsResourceMenuScrollPosTo) {
