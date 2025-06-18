@@ -6,20 +6,16 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
 // when going to another article (not when loading fresh hard reload)
 // based on us replacing throw grammar error in dist with call to the function below
 globalThis._reloadOnGrammarError = () => {
-  localStorage.restoreJsResourceMenuScrollPosTo =
-    document.querySelector('#js-resource_menu').scrollTop;
+  localStorage.reloadAfterGrammarError = 'true';
   location.reload();
 };
 
-if (localStorage.restoreJsResourceMenuScrollPosTo) {
-  let pos = localStorage.restoreJsResourceMenuScrollPosTo;
-  delete localStorage.restoreJsResourceMenuScrollPosTo;
-  while (!document.querySelector('#js-resource_menu')) {
+if (localStorage.reloadAfterGrammarError) {
+  delete localStorage.reloadAfterGrammarError;
+  while (!document.querySelector('#js-resource_menu .resource.active')) {
     await sleep(100);
-    console.log("WAITING");
   }
-  document.querySelector('#js-resource_menu').scrollTop = pos;
-  console.log("RESTORED");
+  document.querySelector('#js-resource_menu .resource.active').scrollIntoView();
 }
 // end fix
 
