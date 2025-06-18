@@ -13,6 +13,7 @@ export default function hilite() {
       .replace(/＜/g, '&lt;')
       .replace(/＞/g, '&gt;');
     let settings = $(this).attr('data-code-details');
+    console.log("SETTINGS", settings);
     html = `<pre data-code-details="${settings}">${html}</pre>`;
     let div = $(`<div>${orgHtml}</div>`);
     $(this).replaceWith(div);
