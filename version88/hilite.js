@@ -14,7 +14,7 @@ export default function hilite() {
       .replace(/＞/g, '&gt;');
     let settings = $(this).attr('data-code-details');
     if (!settings.split('[')[0]) {
-      settings = 'textfile' + settings;
+      settings = 'markdown' + settings;
     }
     console.log("SETTINGS", settings);
     html = `<pre data-code-details="${settings}">${html}</pre>`;
